@@ -1,0 +1,66 @@
+<!DOCTYPE html> {% load staticfiles %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Star Social</title>
+
+  {# BOOTSTRAP4 #}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+  {# GOOGLE FONTS API #}
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet"> {# MASTER CSS #}
+  {# <link rel="stylesheet" href="{% static " simplesocial/css/master.css " %}"> #}
+
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-success">
+    <a class="navbar-brand" href="#">Star Social</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse conatiner-fluid" id="navbarNavDropdown">
+
+      <ul class="navbar-nav ml-auto">
+      {% if user.is_authenticated %}
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">Post</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Groups</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Create Group</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'accounts:logout' %}" class="nav-link">Logout</a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a href="#" class="nav-link">Groups</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'accounts:login' %}" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'accounts:signup'%}" class="nav-link">Sign Up</a>
+        </li>
+      {% endif %}
+
+      </ul>
+    </div>
+  </nav>
+  <div class="container mycontent">
+    {% block content %}
+
+    {% endblock %}
+
+  </div>
+</body>
+
+</html>
