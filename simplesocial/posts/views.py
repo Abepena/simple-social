@@ -50,7 +50,7 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
         return queryset.filter(user__username__iexact=self.kwargs.get('username'))
 
 class CreatePost(LoginRequiredMixin,SelectRelatedMixin,generic.CreateView):
-    field = ('message','group')
+    fields = ('message','group')
     model = models.Post
 
     def form_valid(self,form):

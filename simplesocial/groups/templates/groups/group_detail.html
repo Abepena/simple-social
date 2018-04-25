@@ -8,6 +8,9 @@
       <a href="{% url 'groups:leave' slug=group.slug %}"
       class='btn btn-lg btn-warning'>
       <span class='fas fa-minus-circle'></span>Leave</a>
+      <a href="{% url 'posts:create' %}" class'btn btn-md btn-warning'>
+        <span class="fas fa-plus"></span> Create New Post
+      </a>
   {% else %}
     <a href="{% url 'groups:join' slug=group.slug %}"
     class='btn btn-lg btn-warning'>
@@ -19,14 +22,14 @@
 
 {% block group_content %}
 <div class="col-md-8">
-  {% if group.posts.count==0 %}
+  {% if group.posts.count == 0 %}
     <h2>No posts in this group yet!</h2>
 
   {% else %}
     {% for posts in groups.posts.all %}
       {% include "posts/_post.html" %} <!--'extends'/injects in the middle of an html doc-->
     {% endfor %}
-    
+
   {% endif %}
 
 </div>
